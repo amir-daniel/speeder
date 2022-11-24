@@ -1,0 +1,56 @@
+{
+  "name": "Speeder",
+  "short_name": "speeder",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "minimum_chrome_version": "89",
+  "description": "Speed up, slow down, advance and rewind HTML5 audio/video with shortcuts",
+  "homepage_url": "https://github.com/amir-daniel",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_icon": {
+      "19": "icons/icon19.png",
+      "38": "icons/icon38.png",
+      "48": "icons/icon48.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": ["http://*/*", "https://*/*", "file:///*"],
+      "match_about_blank": true,
+      "exclude_matches": [
+        "https://plus.google.com/hangouts/*",
+        "https://hangouts.google.com/*",
+        "https://meet.google.com/*"
+      ],
+      "css": ["inject.css"],
+      "js": ["inject.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.css", "shadow.css"],
+      "matches": ["http://*/*", "https://*/*", "file:///*"]
+    },
+    {
+      "resources": [
+        "fonts/Qw38ZQNGEDjaO2m6tqIqX5E-AVS5_rSejo46_PCTRspJ0OosolrBEJL3HO_T7fE.woff2",
+        "fonts/KFOmCnqEu92Fr1Mu4mxK.woff2",
+        "fonts/KFOlCnqEu92Fr1MmEU9fBBc4.woff2",
+        "fonts/KFOmCnqEu92Fr1Mu7GxKOzY.woff2"
+      ],
+      "matches": ["http://*/*", "https://*/*", "file:///*"]
+    }
+  ]
+}
